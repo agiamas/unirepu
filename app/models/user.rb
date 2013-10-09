@@ -5,14 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   def self.create_with_omniauth(auth)
-    auth.email = auth["info"]["email"]
-    auth.password = auth.email
-    create! do |user|
-      user.provider = auth["provider"]
-      user.uid = auth["uid"]
-      puts text: auth.inspect
-      user.name = auth["info"]["name"]
+    puts text: auth.inspect
 
-    end
+    User.create(email: auth["info"]["email"],
+                password: auth["info"]["email"],
+                provider: auth["provider"],
+                uid: auth["uid"],
+                name: auth["info"]["name"]
+    )
   end
 end
