@@ -7,6 +7,9 @@ class DashboardController < ApplicationController
       config.oauth_token_secret = session['account_token_secret']
     end
 
+
+    return redirect_to root_url if current_user.provider == 'facebook'
+
     @user_tweets = client.user_timeline(:count => 200)
 
     # start fetching data to feed to our super algorithm
