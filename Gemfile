@@ -11,6 +11,10 @@ gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass', '~> 2.3.2.2'
 gem 'devise'
 gem 'devise_invitable'
+#gem 'oa-oauth', :require => 'omniauth/oauth'
+#gem 'oa-openid', :require => 'omniauth/openid'
+gem 'omniauth'
+
 gem 'figaro'
 group :development do
   gem 'better_errors'
