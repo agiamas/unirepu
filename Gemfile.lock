@@ -105,6 +105,10 @@ GEM
     jwt (0.1.8)
       multi_json (>= 1.5)
     kgio (2.8.1)
+    koala (1.7.0rc1)
+      addressable
+      faraday
+      multi_json
     launchy (2.3.0)
       addressable (~> 2.3)
     listen (2.0.2)
@@ -249,6 +253,7 @@ DEPENDENCIES
   guard-rspec
   jbuilder (~> 1.2)
   jquery-rails
+  koala (~> 1.7.0rc1)
   omniauth
   omniauth-facebook
   omniauth-twitter
