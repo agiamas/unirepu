@@ -15,6 +15,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'twitter'
+gem "koala", "~> 1.7.0rc1"
 
 group :development do
   gem 'better_errors'
