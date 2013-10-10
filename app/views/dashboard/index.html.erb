@@ -2,29 +2,55 @@
 
   <div class="row-fluid col-wrap">
     <div class="span2 col">
-      left nav content
-    </div>
+        On the center pane you can see your overall score and your score in subcategories based on our transparent algorithm
+     </div>
 
     <div class="span10 col">
-      <div class="span6 col badge badge-important page-header ">
-        overall score:
-        <%= @scores[:overall].round(2) %>
-        <br>
+      <div class="span4 col  ">
+        <div class="badge badge-important page-header">
+          <h4>
+            overall score:
+          </h4>
+        </div>
+<div class="numberCircle"><%= @scores[:overall].round(2) %></div>
       </div>
-      <div class="span6 col badge badge-info page-header  ">
-        tech result:
-        <%= @scores[:tech].round(2) %>
-        <br>
-        product results:
-        <%= @scores[:product].round(2) %>
-        <br>
-        politics results:
-        <%= @scores[:politics].round(2) %>
-        <br>
-        sports results:
-        <%= @scores[:sports].round(2) %>
+
+
+      <div class="span8 row">
+        <div class=" badge badge-info page-header">
+          <h4>
+            tech result:
+          </h4>
+        </div>
+        <div class="numberCircle">
+          <%= @scores[:tech].round(2) %>
+        </div>
+        <div class=" badge badge-info page-header">
+          <h4>
+            product results:
+          </h4>
+        </div>
+        <div class="numberCircle">
+          <%= @scores[:product].round(2) %>
+        </div>
+        <div class=" badge badge-info page-header">
+          <h4>
+            politics results:
+          </h4>
+        </div>
+        <div class="numberCircle">
+          <%= @scores[:politics].round(2) %>
+        </div>
+        <div class=" badge badge-info page-header">
+          <h4>
+            sports results:
+          </h4>
+        </div>
+        <div class="numberCircle">
+          <%= @scores[:sports].round(2) %>
+        </div>
       </div>
     </div>
-    <div class="span2 ">
-    </div>
+
   </div>
+</div>
