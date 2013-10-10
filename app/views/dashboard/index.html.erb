@@ -1,19 +1,30 @@
+<div class="container">
 
-overall score:
-  <%= @scores[:overall].round(2) %>
-              <br>
-tech result:
-<%= @scores[:tech].round(2) %>
-<br>
-product results:
-<%= @scores[:product].round(2) %>
-<br>
-politics results:
-<%= @scores[:politics].round(2) %>
-<br>
-sports results:
-<%= @scores[:sports].round(2) %>
+  <div class="row-fluid col-wrap">
+    <div class="span2 col">
+      left nav content
+    </div>
 
-
-<br><br>
-<%= session.inspect %>
+    <div class="span10 col">
+      <div class="span6 col badge badge-important page-header ">
+        overall score:
+        <%= @scores[:overall].round(2) %>
+        <br>
+      </div>
+      <div class="span6 col badge badge-info page-header  ">
+        tech result:
+        <%= @scores[:tech].round(2) %>
+        <br>
+        product results:
+        <%= @scores[:product].round(2) %>
+        <br>
+        politics results:
+        <%= @scores[:politics].round(2) %>
+        <br>
+        sports results:
+        <%= @scores[:sports].round(2) %>
+      </div>
+    </div>
+    <div class="span2 ">
+    </div>
+  </div>
