@@ -2,8 +2,9 @@
 
   <div class="row-fluid col-wrap">
     <div class="span2 col">
-        On the center pane you can see your overall score and your score in subcategories based on our transparent algorithm
-     </div>
+      On the center pane you can see your overall score and your score in subcategories based on our transparent
+      algorithm
+    </div>
 
     <div class="span10 col">
       <div class="span4 col  ">
@@ -12,11 +13,19 @@
             overall score:
           </h4>
         </div>
-<div class="numberCircle"><%= @scores[:overall].round(2) %></div>
+        <div class="numberCircle"><%= @scores[:overall].round(2) %></div>
       </div>
 
 
       <div class="span8 row">
+        <div class=" badge badge-info page-header">
+          <h4>
+            facebook VS twitter results
+          </h4>
+        </div>
+        <canvas id="myChart" width="400" height="400"></canvas>
+        <canvas id="myChart2" width="400" height="400"></canvas>
+
         <div class=" badge badge-info page-header">
           <h4>
             tech result:
@@ -27,7 +36,7 @@
         </div>
         <div class=" badge badge-info page-header">
           <h4>
-            product results:
+            product result:
           </h4>
         </div>
         <div class="numberCircle">
@@ -35,7 +44,7 @@
         </div>
         <div class=" badge badge-info page-header">
           <h4>
-            politics results:
+            politics result:
           </h4>
         </div>
         <div class="numberCircle">
@@ -43,7 +52,7 @@
         </div>
         <div class=" badge badge-info page-header">
           <h4>
-            sports results:
+            sports result:
           </h4>
         </div>
         <div class="numberCircle">
@@ -54,3 +63,52 @@
 
   </div>
 </div>
+
+<script >
+    var data = {
+        labels : ["Tech", "Product","Politics", "Sports"],
+        datasets : [
+            {
+                fillColor : "rgba(220,220,220,0.5)",
+                strokeColor : "rgba(220,220,220,1)",
+                pointColor : "rgba(220,220,220,1)",
+                pointStrokeColor : "#fff",
+                data : [<%=@scores[:tech].round(2)%>,<%=@scores[:product].round(2)%>,<%=@scores[:politics].round(2)%>, <%=@scores[:sports].round(2)%>]
+            },
+            {
+                fillColor : "rgba(220,220,220,0.5)",
+                strokeColor : "rgba(220,220,220,1)",
+                pointColor : "rgba(220,220,220,1)",
+                pointStrokeColor : "#fff",
+                data : [<%=@fb_scores[:tech].round(2)%>,<%=@fb_scores[:product].round(2)%>,<%=@fb_scores[:politics].round(2)%>, <%=@fb_scores[:sports].round(2)%>]
+            }
+        ]
+
+    }
+    var data2 = {
+        labels : ["Tech", "Product","Politics", "Sports"],
+        datasets : [
+            {
+                fillColor : "rgba(220,220,220,0.5)",
+                strokeColor : "rgba(220,220,220,1)",
+                pointColor : "rgba(220,220,220,1)",
+                pointStrokeColor : "#fff",
+                data : [<%=(@scores[:tech].round(2) + @fb_scores[:tech].round(2))/2%>,<%=(@scores[:product].round(2) + @fb_scores[:product].round(2))/2%>,<%=(@scores[:politics].round(2) + @fb_scores[:politics].round(2))/2%>, <%=(@scores[:sports].round(2) + @fb_scores[:sports].round(2))/2%>]
+            }
+
+        ]
+
+    }
+    # fb and twitter separately
+    var ctx = document.getElementById("myChart").getContext("2d");
+    # averages from FB and twitter
+    var ctx2 = document.getElementById("myChart2").getContext("2d");
+    var chart1 = new Chart(ctx).Radar(data);
+    var chart2 = new Chart(ctx2).Radar(data);
+
+    $(document).on('page:load', function() { chart1; });
+    $(document).on('page:load', function() { chart2; });
+
+
+
+</script>

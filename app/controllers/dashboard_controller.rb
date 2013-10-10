@@ -7,7 +7,7 @@ class DashboardController < ApplicationController
       config.oauth_token_secret = session['account_token_secret']
     end
 
-    @user_tweets = client.user_timeline(:count => 200)
+    @user_tweets = client.user_timeline(:count => 50)
 
     # start fetching data to feed to our super algorithm
     @tweet_text = ''

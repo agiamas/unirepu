@@ -2,11 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@font-face
+{
+  font-family: myFirstFont;
+  src: url('/assets/Greek.ttf');
+
+}
+
+h4 {
+  font-family: myFirstFont;
+}
 .numberCircle {
   -webkit-border-radius: 999px;
   -moz-border-radius: 999px;
   border-radius: 999px;
-  behavior: url(PIE.htc);
+  behaviour: url(PIE.htc);
 
   width: 100px;
   height: 100px;
