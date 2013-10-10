@@ -39,16 +39,17 @@ class DashboardController < ApplicationController
     @politics_freq = get_frequency_of_word_in_text(tweet_text, 'communists πασοκ thalassa', total_count)
     #sports
     @sports_freq = get_frequency_of_word_in_text(tweet_text, 'panathinaikos olympiakos', total_count)
-    @highest_freq = [@tech_freq, @product_freq, @politics_freq, @sports_freq].sort.last
+    @highest_freq = [@tech_freq.to_i, @product_freq.to_i, @politics_freq.to_i, @sports_freq.to_i].sort.last
 
     puts "total_count: #{total_count}"
     puts "tech_freq: #{@tech_freq}"
     puts "product_freq: #{@product_freq}"
+    puts "politics_freq: #{@politics_freq}"
     puts "sports_freq: #{@sports_freq}"
     puts "highest_freq: #{@highest_freq}"
 
     # higher ratio indicates famous person
-    @friend_follow_ratio = @number_of_friends / @number_of_followers
+    @friend_follow_ratio = number_friends / number_followers
 
     @normalize_factor = @friend_follow_ratio.to_f * @highest_freq.to_f
     @tech_relative_freq = @tech_freq / @normalize_factor
@@ -81,7 +82,7 @@ class DashboardController < ApplicationController
 
     data = {}
     posts = graph.fql_query("SELECT message FROM stream WHERE source_id = me() LIMIT 100")
-    data[:number_of_friends] = graph.fql_query("select friend_count from user where uid = me()")
+    data[:number_of_friends] = graph.fql_query("select friend_count from user where uid = me()").first['friend_count']
     data[:posts] = posts.map(&:values).flatten.join(' ').downcase #normilize the post results
 
     data
